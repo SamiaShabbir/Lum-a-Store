@@ -1,8 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #748dae;
+  --foreground: aliceblue;
+  --foreground-hover: #748dae;
+  --bg: #eeeeee;
+  --text: #504b38;
+  --accent: #f5cbcb;
+  --accent-2: #f4e9ea;
+  --muted: #e5e7eb;
+  --success: #748dae;
+  --card-bg: #f6f8fb; /* light slate-tinted background */
+  --card-ring: rgba(255, 255, 255, 0.4);
+  --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --badge-bg: rgba(255, 255, 255, 0.85);
+  --badge-text: var(--text, #504b38);
+  --input-text: #001bb7;
+  /* badge accents to match your warmer tags */
+  --badge-new: #ffa447; /* warm orange */
+  --badge-sale: #e35d6a; /* rose/coral */
+  --badge-best: #5bb98a; /* gentle green */
 }
 
 @theme inline {
@@ -18,9 +35,364 @@
     --foreground: #ededed;
   }
 }
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.header {
+  background: #748dae;
+  color: aliceblue;
+}
+.btn-primary {
+  background-color: #6a0066; /* purple */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 9999px; /* rounded-full */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* smooth hover */
+}
+
+.btn-primary:hover {
+  background-color: #b9375d; /* rose pink on hover */
+}
+.header-dropdown {
+  background: #748dae;
+}
+/* Navigation links hover */
+.header nav ul li a,
+.header nav ul li button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.header nav ul li a:hover,
+.header nav ul li button:hover {
+  background-color: var(--accent); /* light accent background */
+  color: var(--foreground-hover); /* text becomes light */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* subtle shadow */
+  transform: translateY(-2px); /* small lift */
+}
+.cat-tag {
+  background: #ffd93d;
+  color: #4f200d;
+  font-weight: bolder;
+  font-size: medium;
+  font-family: system-ui;
+}
+.product-slu {
+  background: #ff9a00;
+  color: #37353e;
+  font-size: medium;
+  font-weight: 500;
+}
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-ring);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+.link-soft {
+  color: var(--foreground-hover);
+}
+/* universal badge shell */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  backdrop-filter: blur(6px);
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* colored dots inside badges */
+.badge::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.55) inset;
+}
+
+/* badge variants */
+.badge--new::before {
+  background: var(--badge-new);
+}
+.badge--sale::before {
+  background: var(--badge-sale);
+}
+.badge--bestseller::before {
+  background: var(--badge-best);
+}
+
+/* hover Add‑to‑cart panel */
+.atc-wrap {
+  pointer-events: none;
+}
+.atc-wrap > div {
+  pointer-events: auto;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(6px);
+  opacity: 0;
+}
+.group:hover .atc-wrap > div {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Primary CTA uses your btn-primary color rules */
+.btn-atc {
+  border-radius: 9999px;
+  padding: 0.55rem 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #b9375d; /* matches your hover color – tweak if you like */
+}
+.btn-atc:hover {
+  opacity: 0.92;
+}
+/* tokens that match your theme */
+.card {
+  background: #f6f7fb; /* very light blue-gray that sits on your header */
+  border: 1px solid #d7deea; /* soft border */
+  border-radius: 24px;
+}
+
+.badge-soft {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2b2e3a;
+  border: 1px solid #e6e9f2;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.btn-primary {
+  /* you already have this – keep it */
+  background-color: #6a0066;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 6px 14px rgba(106, 0, 102, 0.25);
+}
+.btn-primary:hover {
+  opacity: 0.92;
+}
+.btn-primary:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) translateX(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+
+/* Optional: a slightly stronger shadow for toasts than regular cards */
+.toast {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Cart theming helpers --- */
+.text-main {
+  color: var(--text);
+}
+.text-light {
+  color: var(--foreground);
+}
+.text-muted {
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+}
+.text-muted-light {
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+}
+.card-soft {
+  background: var(--card-bg);
+  border: 1px solid var(--card-ring);
+  border-radius: 16px;
+}
+
+.thumb {
+  position: relative;
+  border: 1px solid var(--card-ring);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* Remove button */
+.btn-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background-color: #fcc61d; /* bright yellow */
+  color: #3338a0; /* deep blue text */
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+}
+
+/* Hover & active */
+.btn-remove:hover {
+  opacity: 0.9;
+  transform: translateY(-2px); /* slight lift */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-remove:active {
+  transform: translateY(0); /* reset on click */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Qty pill */
+.qty {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid var(--card-ring);
+  background: #9ecad6;
+  overflow: hidden;
+}
+.qty button {
+  padding: 0.25rem 0.75rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.qty button:hover {
+  background: var(--accent);
+  color: var(--foreground-hover);
+}
+.qty span {
+  padding: 0 0.75rem;
+}
+
+/* Checkout button uses your existing .btn-primary */
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Optional: a soft panel background for the items column */
+.surface {
+  background: color-mix(in srgb, var(--card-bg) 70%, transparent);
+  border-radius: 18px;
+}
+/* Layout for the form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px 16px;
+}
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.label-soft {
+  display: block;
+  font-size: 0.85rem;
+  color: #6a0066;
+  opacity: 0.9;
+  margin-bottom: 6px;
+}
+
+.input-soft {
+  background: #d6dac8;
+  width: 100%;
+  border: 3px solid #9ecad6;
+  border-radius: 13px;
+  outline: none;
+  color: #0a0a0a;
+  padding: 10px 12px;
+  transition: box-shadow 0.2s, border-color 0.2s, background-color 0.2s;
+}
+.input-soft:focus {
+  background: #ffeaea;
+  border-color: #f5cbcb;
+  box-shadow: 0 0 0 3px rgba(106, 0, 102, 0.12);
+  color: #555879;
+}
+
+.error-soft {
+  margin-top: 4px;
+  color: #b3261e;
+  font-size: 0.8rem;
+}
+
+/* Optional: thumb container (reused in cart) */
+.thumb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--card-ring);
+}
+
+/* Country dropdown */
+.select-soft {
+  width: 100%;
+  background: var(--card-bg);
+  color: var(--input-text);
+  border: 1px solid var(--card-ring);
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  appearance: none; /* hide default arrow */
+  background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%233338A0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px 18px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.select-soft:focus {
+  border-color: rgba(106, 0, 102, 0.6);
+  box-shadow: 0 0 0 3px rgba(106, 0, 102, 0.12);
+  background-color: #fff;
+}
+
+.no-transform,
+.no-transform * {
+  transform: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Make sure the container won't clip the dropdown */
+.card-soft {
+  overflow: visible;
 }
