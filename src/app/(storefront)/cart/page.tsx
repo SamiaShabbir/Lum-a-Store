@@ -12,7 +12,7 @@ export default function CartPage() {
   const router = useRouter();
 
   // hooks at the top
-  const { items, subtotal, count, setQty, remove, clear } = useCartStore();
+  const { items, subtotal, count, setQty, remove } = useCartStore();
   const [mounted, setMounted] = useState(false);
   const { push } = useToast();
 

@@ -1,25 +1,43 @@
+// /src/app/(storefront)/success/page.tsx
 "use client";
 
-import Link from "next/link";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
-export default function SuccessPage() {
+function SuccessInner() {
   const sp = useSearchParams();
-  const order = sp.get("order");
+  const orderId = sp.get("order") ?? "—";
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-14 text-center">
-      <h1 className="font-serif text-3xl text-text">Thank you! 🎉</h1>
-      <p className="mt-3 text-text">
-        Your order {order ? <span className="font-medium">#{order}</span> : null} has been placed.
+    <main className="mx-auto max-w-3xl px-4 py-14">
+      <h1 className="font-serif text-3xl md:text-4xl">Thank you!</h1>
+      <p className="mt-3 text-[color:var(--foreground)]/80">
+        Your order has been placed successfully.
       </p>
-      <p className="mt-1 text-text-muted">You’ll get a confirmation email (demo).</p>
+
+      <div className="mt-6 card-soft p-5">
+        <div className="text-sm">Order ID</div>
+        <div className="mt-1 text-xl font-medium">{orderId}</div>
+      </div>
 
       <div className="mt-8">
-        <Link href="/catalog" className="rounded-full bg-primary px-5 py-3 text-white hover:opacity-90">
-          Continue shopping
-        </Link>
+        <Link href="/catalog" className="btn-primary inline-flex">Continue shopping</Link>
       </div>
     </main>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="mx-auto max-w-3xl px-4 py-14">
+          <div className="card-soft p-5">Loading…</div>
+        </main>
+      }
+    >
+      <SuccessInner />
+    </Suspense>
   );
 }

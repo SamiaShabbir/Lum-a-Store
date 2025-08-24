@@ -25,7 +25,7 @@ const STORAGE_KEY = "ecomo-checkout";
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { items, subtotal, count, clear } = useCartStore();
+  const { subtotal, count, clear } = useCartStore();
   const { push } = useToast();
 
   // simple shipping + tax math (same as cart)

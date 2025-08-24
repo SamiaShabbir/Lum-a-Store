@@ -1,23 +1,27 @@
-// /src/app/(storefront)/product/[slug]/page.tsx
-import ProductDetails, {
-  type PDPProduct,
-} from "../../components/ProductDetails";
+// src/app/(storefront)/product/[slug]/page.tsx
+import { notFound } from "next/navigation"; // (PageProps import not required for A)
+import ProductDetails, { PDPProduct } from "@/app/(storefront)/components/ProductDetails";
 import { bySlug } from "@/data/products";
-import { notFound } from "next/navigation";
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const p = bySlug(params.slug);
-  if (!p) return notFound();
+type Props = {
+  params: Promise<{ slug: string }>; // <- params is a Promise in Next 15 builds
+};
 
-  const product: PDPProduct = {
-    id: p.id,
-    slug: p.slug,
-    title: p.title,
-    price: p.price,
-    images: p.gallery.length ? p.gallery : [p.image],
-    description: p.description,
-    bullets: p.bullets,
+export default async function ProductPage({ params }: Props) {
+  const { slug } = await params;
+
+  const product = bySlug(slug);
+  if (!product) notFound();
+
+  const pdp: PDPProduct = {
+    id: product.id,
+    slug: product.slug,
+    title: product.title,
+    price: product.price,
+    images: product.gallery,
+    description: product.description,
+    bullets: product.bullets,
   };
 
-  return <ProductDetails product={product} />;
+  return <ProductDetails product={pdp} />;
 }
