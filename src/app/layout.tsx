@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ecomo Beauty",
-  description: "Alysum-inspired beauty storefront",
+  title: "Luméa",
+  description: "",
 };
 
 export default function RootLayout({
