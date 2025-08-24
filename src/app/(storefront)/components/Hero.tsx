@@ -15,15 +15,6 @@ export default function Hero() {
             and results you can feel—without the fuss.
           </p>
 
-          <div className="mt-8">
-            <Link
-              href="/catalog?tag=bestsellers"
-              className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition hover:bg-secondary hover:text-text"
-            >
-              Shop bestsellers
-            </Link>
-          </div>
-
           {/* Key points */}
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-text-muted">
             <li className="inline-flex items-center gap-2">

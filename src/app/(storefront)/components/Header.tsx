@@ -245,7 +245,7 @@ export default function Header() {
             </button>
 
             {/* User */}
-            <Link href="/account" aria-label="Account" className="inline-flex">
+            <Link href="/" aria-label="Account" className="inline-flex">
               <svg
                 width="22"
                 height="22"

@@ -62,8 +62,8 @@ export default async function CatalogPage({
                 href={href}
                 className={`rounded-full px-3 py-1.5 text-sm ring-1 transition ${
                   active
-                    ? "bg-[#9ECAD6] text-white ring-black"
-                    : "bg-[#EEEEEE] text-text ring-base-border hover:bg-secondary/60"
+                    ? "bg-[#9ECAD6] text-white ring-black "
+                    : "bg-[#EEEEEE] text-black text-text ring-base-border hover:bg-secondary/60"
                 }`}
               >
                 {LABELS[k]}
