@@ -43,7 +43,7 @@
 ```bash
 # 1) Clone
 git clone https://github.com/SamiaShabbir/Lum-a-Store.git
-cd <REPO>
+cd <Lum-a-Store>
 
 
 # 2) Install
