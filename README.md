@@ -42,7 +42,7 @@
 ## 🚀 Quick Start
 ```bash
 # 1) Clone
-git clone https://github.com/<USER>/<REPO>.git
+git clone https://github.com/SamiaShabbir/Lum-a-Store.git
 cd <REPO>
 
 
@@ -57,3 +57,59 @@ npm run dev
 
 # 4) Build
 npm run build && npm start
+
+📦 Project Structure
+.
+├─ app/
+│ ├─ layout.tsx
+│ ├─ page.tsx # Home
+│ └─ (routes)/ # e.g. products/, cart/
+├─ components/ # UI building blocks
+├─ data/ # Dummy JSON (products, etc.)
+├─ lib/ # utils (format, filters)
+├─ public/
+│ └─ readme/ # screenshots for this README
+├─ styles/
+├─ package.json
+└─ README.md
+
+🧪 Dummy Data
+
+Example data/products.json item:
+{
+"id": "p_001",
+"title": "Lumea Wireless Headphones",
+"price": 149.99,
+"currency": "USD",
+"rating": 4.7,
+"images": ["/images/headphones-1.jpg", "/images/headphones-2.jpg"],
+"tags": ["audio", "wireless"],
+"description": "Crisp sound with noise isolation.",
+"stock": 32
+}
+
+🏎️ Performance Notes
+
+Route prefetching & code splitting (Next.js)
+
+Lazy images via next/image
+
+Memoization (memo, useMemo, useCallback) for heavy UI
+
+Lightweight client state for cart
+
+Run Lighthouse in DevTools and add scores here for social proof.
+
+🔌 Going Real‑Time (Optional)
+
+Implement API routes in app/api/* and fetch with SSR/CSR
+
+Add WebSockets (Socket.IO) or SSE for live updates
+
+Tune caching with ISR or fetch({ cache: 'no-store' })
+
+👤 Author
+
+Samia Shabbir (Synterion Solutions)
+Portfolio: https://synterion-solutions.vercel.app/
+Email: <info.synterionsolutions@gmail.com>
