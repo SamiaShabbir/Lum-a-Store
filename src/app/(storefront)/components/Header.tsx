@@ -4,20 +4,32 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useCartStore } from "@/store/cart";
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const cartCount = useCartStore((s) => s.count);
-  console.log(cartCount);
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => setMounted(true), []);
+
+  // Add scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-base-border backdrop-blur header">
+    <header className={`header sticky top-0 z-50 border-b border-base-border ${scrolled ? "scrolled" : ""}`}>
       <div className="mx-auto max-w-7xl px-4 py-3 md:py-4">
         <div className="flex items-center justify-between gap-4">
           {/* Left: Logo */}
           <div className="flex items-center gap-3">
             <button
-              className="inline-flex md:hidden"
+              className="header-mobile-menu-btn inline-flex md:hidden"
               aria-label="Open menu"
               onClick={() => setMobileOpen(true)}
             >
@@ -36,18 +48,18 @@ export default function Header() {
               </svg>
             </button>
 
-            <Link href="/" className="flex items-center gap-2">
-              <div className="relative h-8 w-8 overflow-hidden rounded-full bg-secondary ring-1 ring-secondary">
+            <Link href="/" className="header-logo flex items-center gap-2">
+              <div className="header-logo-ring relative h-8 w-8 overflow-hidden rounded-full bg-secondary ring-1 ring-secondary">
                 <Image
                   src="/logo.png"
-                  alt="Ecomo Beauty"
+                  alt="Luméa"
                   fill
                   sizes="32px"
                   className="object-cover"
                   priority
                 />
               </div>
-              <span className="font-serif text-lg tracking-wide text-text">
+              <span className="font-serif text-lg tracking-wide text-foreground">
                 Luméa
               </span>
             </Link>
@@ -59,7 +71,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/"
-                  className="text-sm text-text transition-colors   "
+                  className="header-nav-link text-sm text-foreground"
                 >
                   Home
                 </Link>
@@ -68,7 +80,7 @@ export default function Header() {
               {/* Shop with Mega Menu */}
               <li className="group relative">
                 <button
-                  className="text-sm text-text transition-colors drop-down"
+                  className="header-shop-dropdown text-sm text-foreground pr-5"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
@@ -77,20 +89,20 @@ export default function Header() {
 
                 {/* Mega menu panel */}
                 <div
-                  className="invisible absolute left-1/2 top-full z-50 w-[720px] -translate-x-1/2 opacity-0 transition
+                  className="header-mega-menu invisible absolute left-1/2 top-full z-50 w-[720px] -translate-x-1/2 opacity-0 transition
                              group-hover:visible group-hover:opacity-100"
                   role="menu"
                 >
-                  <div className="mt-3 rounded-2xl border border-base-border   p-6 shadow-xl header-dropdown">
+                  <div className="header-mega-menu-panel mt-3 rounded-2xl p-6 shadow-xl">
                     <div className="grid grid-cols-3 gap-6">
                       {/* Col 1 */}
                       <div>
-                        <p className="mb-3 font-medium text-text">Face</p>
-                        <ul className="space-y-2 text-sm">
+                        <p className="header-mega-category-title">Face</p>
+                        <ul className="space-y-1 text-sm">
                           <li>
                             <Link
                               href="/catalog?cat=cleansers"
-                              className="  "
+                              className="header-mega-link"
                             >
                               Cleansers
                             </Link>
@@ -98,7 +110,7 @@ export default function Header() {
                           <li>
                             <Link
                               href="/catalog?cat=serums"
-                              className="  "
+                              className="header-mega-link"
                             >
                               Serums
                             </Link>
@@ -106,7 +118,7 @@ export default function Header() {
                           <li>
                             <Link
                               href="/catalog?cat=moisturizers"
-                              className="  "
+                              className="header-mega-link"
                             >
                               Moisturizers
                             </Link>
@@ -114,7 +126,7 @@ export default function Header() {
                           <li>
                             <Link
                               href="/catalog?cat=sunscreen"
-                              className="  "
+                              className="header-mega-link"
                             >
                               SPF
                             </Link>
@@ -124,14 +136,14 @@ export default function Header() {
 
                       {/* Col 2 */}
                       <div>
-                        <p className="mb-3 font-medium text-text">
+                        <p className="header-mega-category-title">
                           Body & Hair
                         </p>
-                        <ul className="space-y-2 text-sm">
+                        <ul className="space-y-1 text-sm">
                           <li>
                             <Link
                               href="/catalog?cat=body"
-                              className="  "
+                              className="header-mega-link"
                             >
                               Body Care
                             </Link>
@@ -139,7 +151,7 @@ export default function Header() {
                           <li>
                             <Link
                               href="/catalog?cat=hair"
-                              className="  "
+                              className="header-mega-link"
                             >
                               Hair Care
                             </Link>
@@ -147,7 +159,7 @@ export default function Header() {
                           <li>
                             <Link
                               href="/catalog?cat=tools"
-                              className="  "
+                              className="header-mega-link"
                             >
                               Tools & Accessories
                             </Link>
@@ -158,9 +170,8 @@ export default function Header() {
                       {/* Col 3: Feature */}
                       <Link
                         href="/product/radiance-serum"
-                        className="relative overflow-hidden rounded-xl ring-1 ring-base-border"
+                        className="header-mega-feature-card relative overflow-hidden rounded-xl ring-1 ring-base-border"
                       >
-                        {/* Use a local image to avoid remote config */}
                         <Image
                           src="/serum.jpg"
                           alt="Featured"
@@ -168,11 +179,11 @@ export default function Header() {
                           height={320}
                           className="h-36 w-full object-cover"
                         />
-                        <div className="p-3">
-                          <p className="font-medium text-text">
+                        <div className="p-3 bg-white/95 backdrop-blur">
+                          <p className="font-medium text-text text-black">
                             Radiance Serum
                           </p>
-                          <p className="mt-1 text-sm text-text-muted">
+                          <p className="mt-1 text-sm text-text-muted text-black">
                             Niacinamide + HA • New
                           </p>
                         </div>
@@ -183,13 +194,13 @@ export default function Header() {
                     <div className="mt-5 flex items-center justify-between">
                       <Link
                         href="/catalog?tag=new"
-                        className="text-sm   "
+                        className="header-mega-bottom-link text-sm"
                       >
                         New Arrivals
                       </Link>
                       <Link
                         href="/catalog?tag=bestsellers"
-                        className="text-sm   "
+                        className="header-mega-bottom-link text-sm"
                       >
                         Bestsellers
                       </Link>
@@ -201,7 +212,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/catalog?tag=new"
-                  className="text-sm text-text transition-colors   "
+                  className="header-nav-link text-sm text-foreground"
                 >
                   New
                 </Link>
@@ -209,7 +220,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/about"
-                  className="text-sm text-text transition-colors   "
+                  className="header-nav-link text-sm text-foreground"
                 >
                   About
                 </Link>
@@ -218,9 +229,9 @@ export default function Header() {
           </nav>
 
           {/* Right: Actions */}
-          <div className="flex items-center gap-4">
-            {/* Search (non-functional placeholder) */}
-            <button className="hidden md:inline-flex" aria-label="Search">
+          <div className="flex items-center gap-2">
+            {/* Search */}
+            <button className="header-action-icon hidden md:inline-flex" aria-label="Search">
               <svg
                 width="22"
                 height="22"
@@ -245,7 +256,7 @@ export default function Header() {
             </button>
 
             {/* User */}
-            <Link href="/" aria-label="Account" className="inline-flex">
+            <Link href="/" aria-label="Account" className="header-action-icon inline-flex">
               <svg
                 width="22"
                 height="22"
@@ -273,7 +284,7 @@ export default function Header() {
             <Link
               href="/cart"
               aria-label="Cart"
-              className="relative inline-flex"
+              className="header-action-icon relative inline-flex"
             >
               <svg
                 width="22"
@@ -288,14 +299,14 @@ export default function Header() {
                   fill="none"
                   strokeLinecap="round"
                 />
-                <circle cx="10" cy="20" r="1.5" />
-                <circle cx="18" cy="20" r="1.5" />
+                <circle cx="10" cy="20" r="1.5" fill="currentColor" />
+                <circle cx="18" cy="20" r="1.5" fill="currentColor" />
               </svg>
 
               {/* Badge */}
               {mounted && cartCount > 0 && (
                 <span
-                  className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center 
+                  className="header-cart-badge absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center 
                  rounded-full bg-red-500 px-1.5 text-xs font-bold text-white shadow-md"
                   aria-live="polite"
                 >
@@ -316,7 +327,7 @@ export default function Header() {
       >
         {/* Backdrop */}
         <div
-          className={`absolute inset-0 bg-black/30 transition-opacity ${
+          className={`header-mobile-backdrop absolute inset-0 bg-black/40 ${
             mobileOpen ? "opacity-100" : "opacity-0"
           }`}
           onClick={() => setMobileOpen(false)}
@@ -324,15 +335,16 @@ export default function Header() {
 
         {/* Panel */}
         <aside
-          className={`absolute left-0 top-0 h-full w-80 max-w-[85vw] transform   p-5 shadow-2xl transition
+          className={`header-mobile-drawer ${mobileOpen ? "open" : ""} absolute left-0 top-0 h-full w-80 max-w-[85vw] transform p-5 shadow-2xl transition
           ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`}
           role="dialog"
           aria-modal="true"
           aria-label="Mobile menu"
         >
           <div className="mb-6 flex items-center justify-between">
-            <span className="font-serif text-lg text-text">Menu</span>
+            <span className="font-serif text-lg text-foreground">Menu</span>
             <button
+              className="header-mobile-close-btn"
               aria-label="Close menu"
               onClick={() => setMobileOpen(false)}
             >
@@ -353,21 +365,21 @@ export default function Header() {
           </div>
 
           <nav>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               <li>
                 <Link
                   href="/"
                   onClick={() => setMobileOpen(false)}
-                  className="block py-2"
+                  className="header-mobile-nav-link block"
                 >
                   Home
                 </Link>
               </li>
 
-              {/* Collapsible Shop (simple list for mobile) */}
+              {/* Collapsible Shop */}
               <li>
                 <details className="group">
-                  <summary className="cursor-pointer list-none py-2">
+                  <summary className="header-mobile-shop-summary cursor-pointer list-none">
                     <span className="inline-flex items-center justify-between w-full">
                       <span>Shop</span>
                       <svg
@@ -386,53 +398,53 @@ export default function Header() {
                       </svg>
                     </span>
                   </summary>
-                  <div className="mt-2 space-y-2 pl-3 text-sm">
+                  <div className="mt-2 space-y-1 pl-3 text-sm">
                     <Link
                       href="/catalog?cat=cleansers"
                       onClick={() => setMobileOpen(false)}
-                      className="block"
+                      className="header-mobile-shop-link"
                     >
                       Cleansers
                     </Link>
                     <Link
                       href="/catalog?cat=serums"
                       onClick={() => setMobileOpen(false)}
-                      className="block"
+                      className="header-mobile-shop-link"
                     >
                       Serums
                     </Link>
                     <Link
                       href="/catalog?cat=moisturizers"
                       onClick={() => setMobileOpen(false)}
-                      className="block"
+                      className="header-mobile-shop-link"
                     >
                       Moisturizers
                     </Link>
                     <Link
                       href="/catalog?cat=sunscreen"
                       onClick={() => setMobileOpen(false)}
-                      className="block"
+                      className="header-mobile-shop-link"
                     >
                       SPF
                     </Link>
                     <Link
                       href="/catalog?cat=body"
                       onClick={() => setMobileOpen(false)}
-                      className="block"
+                      className="header-mobile-shop-link"
                     >
                       Body Care
                     </Link>
                     <Link
                       href="/catalog?cat=hair"
                       onClick={() => setMobileOpen(false)}
-                      className="block"
+                      className="header-mobile-shop-link"
                     >
                       Hair Care
                     </Link>
                     <Link
                       href="/catalog?cat=tools"
                       onClick={() => setMobileOpen(false)}
-                      className="block"
+                      className="header-mobile-shop-link"
                     >
                       Tools & Accessories
                     </Link>
@@ -444,7 +456,7 @@ export default function Header() {
                 <Link
                   href="/catalog?tag=new"
                   onClick={() => setMobileOpen(false)}
-                  className="block py-2"
+                  className="header-mobile-nav-link block"
                 >
                   New
                 </Link>
@@ -453,7 +465,7 @@ export default function Header() {
                 <Link
                   href="/about"
                   onClick={() => setMobileOpen(false)}
-                  className="block py-2"
+                  className="header-mobile-nav-link block"
                 >
                   About
                 </Link>
@@ -462,7 +474,7 @@ export default function Header() {
                 <Link
                   href="/catalog?tag=bestsellers"
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex rounded-full bg-primary px-4 py-2 text-sm text-white hover:opacity-90"
+                  className="header-mobile-cta inline-flex rounded-full px-4 py-2 text-sm hover:opacity-90"
                 >
                   Shop Bestsellers
                 </Link>
@@ -470,10 +482,10 @@ export default function Header() {
             </ul>
           </nav>
 
-          {/* Soft promo */}
-          <div className="mt-8 rounded-xl bg-secondary p-4 ring-1 ring-secondary/70">
-            <p className="font-medium text-text">Radiance, made gentle.</p>
-            <p className="mt-1 text-sm text-text-muted">
+          {/* Promo card */}
+          <div className="header-mobile-promo mt-8 rounded-xl p-4">
+            <p className="font-medium text-foreground">Radiance, made gentle.</p>
+            <p className="mt-1 text-sm text-muted-light">
               Discover our new hydrating serum with Niacinamide.
             </p>
           </div>

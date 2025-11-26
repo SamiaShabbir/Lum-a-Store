@@ -84,11 +84,6 @@ export default function ProductCard({ product }: { product: Product }) {
             ${product.price.toFixed(2)}
           </p>
         </div>
-        {product.badge ? (
-          <span className="absolute left-3 top-3 rounded-full px-2 py-1 text-xs text-text backdrop-blur ring-1 ring-base-border">
-            {product.badge}
-          </span>
-        ) : null}
       </Link>
     </div>
   );
