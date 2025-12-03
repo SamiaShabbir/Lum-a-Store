@@ -11,9 +11,9 @@
 //           About Luméa
 //         </h1>
 //         <p className="mt-4 max-w-2xl mx-auto text-muted-light ">
-//           At Luméa, we believe that beauty should be effortless, gentle, 
-//           and grounded in nature. Our mission is to craft clean skincare 
-//           essentials that elevate your everyday ritual — because glowing 
+//           At Luméa, we believe that beauty should be effortless, gentle,
+//           and grounded in nature. Our mission is to craft clean skincare
+//           essentials that elevate your everyday ritual — because glowing
 //           skin is the foundation of confidence.
 //         </p>
 //       </section>
@@ -31,9 +31,9 @@
 //         <div>
 //           <h2 className="text-2xl font-semibold text-light">Our Philosophy</h2>
 //           <p className="mt-4 text-muted-light leading-relaxed">
-//             Luméa products are dermatologist-tested, vegan, and free of added 
-//             fragrance. We focus on thoughtful actives, lightweight textures, 
-//             and formulas designed for sensitive skin — so you can glow with 
+//             Luméa products are dermatologist-tested, vegan, and free of added
+//             fragrance. We focus on thoughtful actives, lightweight textures,
+//             and formulas designed for sensitive skin — so you can glow with
 //             confidence every day.
 //           </p>
 //           <ul className="mt-5 space-y-3 text-light">
@@ -48,8 +48,8 @@
 //       <section className="mt-16 text-center">
 //         <h2 className="text-2xl font-semibold text-light">Our Mission</h2>
 //         <p className="mt-4 max-w-3xl mx-auto text-muted-light leading-relaxed">
-//           To empower individuals with gentle yet effective skincare. 
-//           We’re here to simplify routines, celebrate natural beauty, 
+//           To empower individuals with gentle yet effective skincare.
+//           We’re here to simplify routines, celebrate natural beauty,
 //           and leave the world a little better — bottle by bottle.
 //         </p>
 //       </section>
@@ -70,10 +70,10 @@ export default function AboutPage() {
           About Luméa
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-muted-light leading-relaxed text-base md:text-lg">
-          At Luméa, we believe that beauty should be effortless, gentle, 
-          and grounded in nature. Our mission is to craft clean skincare 
-          essentials that elevate your everyday ritual — because glowing 
-          skin is the foundation of confidence.
+          At Luméa, we believe that beauty should be effortless, gentle, and
+          grounded in nature. Our mission is to craft clean skincare essentials
+          that elevate your everyday ritual because glowing skin is the
+          foundation of confidence.
         </p>
       </section>
 
@@ -92,22 +92,40 @@ export default function AboutPage() {
             Our Philosophy
           </h2>
           <p className="mt-6 text-muted-light leading-relaxed">
-            Luméa products are dermatologist-tested, vegan, and free of added 
-            fragrance. We focus on thoughtful actives, lightweight textures, 
-            and formulas designed for sensitive skin — so you can glow with 
+            Luméa products are dermatologist-tested, vegan, and free of added
+            fragrance. We focus on thoughtful actives, lightweight textures, and
+            formulas designed for sensitive skin, so you can glow with
             confidence every day.
           </p>
           <ul className="mt-6 space-y-3 text-light">
             <li className="about-list-item">
-              <span className="text-2xl">🌱</span>
+              <Image
+                src="/clean-cruelty-free.png"
+                alt="Clean ingredients"
+                width={40}
+                height={40}
+                className="flex-shrink-0"
+              />
               <span>Clean, cruelty-free ingredients</span>
             </li>
             <li className="about-list-item">
-              <span className="text-2xl">🧪</span>
+              <Image
+                src="/dermatology-science.png"
+                alt="Dermatology science"
+                width={40}
+                height={40}
+                className="flex-shrink-0"
+              />{" "}
               <span>Backed by dermatology science</span>
             </li>
             <li className="about-list-item">
-              <span className="text-2xl">🌍</span>
+              <Image
+                src="/sustainable-packaging-choices.png"
+                alt="Sustainable packaging"
+                width={40}
+                height={40}
+                className="flex-shrink-0"
+              />
               <span>Sustainable packaging choices</span>
             </li>
           </ul>
@@ -121,9 +139,9 @@ export default function AboutPage() {
             Our Mission
           </h2>
           <p className="mt-6 text-muted-light leading-relaxed text-base md:text-lg">
-            To empower individuals with gentle yet effective skincare. 
-            We're here to simplify routines, celebrate natural beauty, 
-            and leave the world a little better — bottle by bottle.
+            To empower individuals with gentle yet effective skincare. We're
+            here to simplify routines, celebrate natural beauty, and leave the
+            world a little better ,bottle by bottle.
           </p>
         </div>
       </section>
