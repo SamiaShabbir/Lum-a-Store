@@ -19,7 +19,7 @@
 // //               <br />
 // //               Confidence
 // //             </h1>
-            
+
 // //             <p className="hero-subtitle text-lg md:text-xl text-muted-light leading-relaxed mb-8 max-w-lg">
 // //               Clean, dermatologist-tested skincare essentials designed for your everyday ritual. Because beautiful skin starts with gentle care.
 // //             </p>
@@ -28,7 +28,7 @@
 // //               <Link href="/catalog" className="hero-cta-primary inline-block">
 // //                 Shop Now
 // //               </Link>
-              
+
 // //               <Link href="/about" className="hero-cta-secondary inline-block">
 // //                 Learn More
 // //               </Link>
@@ -95,7 +95,7 @@
 //               <br />
 //               Confidence
 //             </h1>
-            
+
 //             <p className="hero-subtitle text-lg md:text-xl text-muted-light leading-relaxed mb-8 max-w-lg">
 //               Clean, dermatologist-tested skincare essentials designed for your everyday ritual. Because beautiful skin starts with gentle care.
 //             </p>
@@ -104,7 +104,7 @@
 //               <Link href="/catalog" className="hero-cta-primary inline-block">
 //                 Shop Now
 //               </Link>
-              
+
 //               <Link href="/about" className="hero-cta-secondary inline-block">
 //                 Learn More
 //               </Link>
@@ -170,16 +170,17 @@ export default function Hero() {
               <br />
               Confidence
             </h1>
-            
+
             <p className="hero-subtitle text-lg md:text-xl text-muted-light leading-relaxed mb-8 max-w-lg">
-              Clean, dermatologist-tested skincare essentials designed for your everyday ritual. Because beautiful skin starts with gentle care.
+              Clean, dermatologist-tested skincare essentials designed for your
+              everyday ritual. Because beautiful skin starts with gentle care.
             </p>
 
             <div className="hero-cta-group">
               <Link href="/catalog" className="hero-cta-primary inline-block">
                 Shop Now
               </Link>
-              
+
               <Link href="/about" className="hero-cta-secondary inline-block">
                 Learn More
               </Link>
@@ -187,16 +188,33 @@ export default function Hero() {
 
             {/* Trust Badges */}
             <div className="hero-trust-badges mt-12 flex flex-wrap gap-4 text-sm text-muted-light">
-              <div className="hero-trust-badge flex items-center gap-2">
-                <span className="text-2xl">🌱</span>
+              <div className="hero-trust-badge flex items-center gap-3">
+                <Image
+                  src="/vegan-cruelty-free.png"
+                  alt="Vegan"
+                  width={32}
+                  height={32}
+                />
                 <span>Vegan & Cruelty-Free</span>
               </div>
-              <div className="hero-trust-badge flex items-center gap-2">
-                <span className="text-2xl">🧪</span>
+
+              <div className="hero-trust-badge flex items-center gap-3">
+                <Image
+                  src="/dermatologist-tested.png"
+                  alt="Tested"
+                  width={32}
+                  height={32}
+                />
                 <span>Dermatologist-Tested</span>
               </div>
-              <div className="hero-trust-badge flex items-center gap-2">
-                <span className="text-2xl">♻️</span>
+
+              <div className="hero-trust-badge flex items-center gap-3">
+                <Image
+                  src="/sustainable-packaging.png"
+                  alt="Sustainable"
+                  width={32}
+                  height={32}
+                />
                 <span>Sustainable Packaging</span>
               </div>
             </div>

@@ -1063,7 +1063,7 @@ body {
 @keyframes slideUpFade {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -1071,6 +1071,14 @@ body {
   }
 }
 
+@keyframes bounceEmoji {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
 .hero-title {
   position: relative;
   display: inline-block;
@@ -1995,14 +2003,6 @@ body {
   animation: bounceEmoji 2s ease-in-out infinite;
 }
 
-@keyframes bounceEmoji {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
-}
 
 .hero-trust-badge:nth-child(1) span:first-child {
   animation-delay: 0s;
