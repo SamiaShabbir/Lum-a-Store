@@ -254,32 +254,7 @@ export default function Header() {
                 />
               </svg>
             </button>
-
-            {/* User */}
-            <Link href="/" aria-label="Account" className="header-action-icon inline-flex">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <circle
-                  cx="12"
-                  cy="8"
-                  r="4"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-                <path
-                  d="M4 20c2.2-3 5-4.5 8-4.5S17.8 17 20 20"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-              </svg>
-            </Link>
-
+            
             {/* Cart */}
             <Link
               href="/cart"
